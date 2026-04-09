@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 49 89% 93%;
+  --foreground: 22 40% 12%;
+
+  --card: 46 100% 92%;
+  --card-foreground: 22 40% 12%;
+
+  --popover: 49 89% 93%;
+  --popover-foreground: 22 40% 12%;
+
+  --primary: 352 42% 31%;
+  --primary-foreground: 50 91% 94%;
+
+  --secondary: 74 31% 32%;
+  --secondary-foreground: 50 91% 94%;
+
+  --muted: 47 61% 89%;
+  --muted-foreground: 23 16% 36%;
+
+  --accent: 33 65% 62%;
+  --accent-foreground: 22 40% 12%;
+
+  --destructive: 4 76% 40%;
+  --destructive-foreground: 50 91% 94%;
+
+  --border: 47 44% 83%;
+  --input: 47 44% 83%;
+  --ring: 33 65% 62%;
+
+  --radius: 0.75rem;
+
+  --font-heading: "Playfair Display";
+  --font-body: "Lato";
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body), sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), sans-serif;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.3); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+
+@keyframes pageEnter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+main { animation: pageEnter 0.3s ease-out; }
+
+::selection { background: hsl(var(--primary) / 0.2); color: hsl(var(--foreground)); }
+
+@layer base { * { border-color: hsl(var(--border)); } body { background-color: hsl(var(--background)); color: hsl(var(--foreground)); } }
